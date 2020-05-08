@@ -8,8 +8,7 @@ const NotificacaoSchema = new Schema({
   body: String,
   userToken: String,
   aplicacao: String,
-  firebaseClient: String,
-  firebaseSecret: String,
+  aplicacaoToken: String,
 });
 
 module.exports = model("Notificacao", NotificacaoSchema);

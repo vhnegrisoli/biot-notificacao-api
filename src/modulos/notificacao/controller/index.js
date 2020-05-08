@@ -1,5 +1,7 @@
-import Notificacao from "../model/Notificacao";
 import * as Yup from "yup";
+
+import Notificacao from "../model/Notificacao";
+import FirebaseService from "../../firebase/service/firebaseService";
 
 class NotificacaoController {
   async receberMensagemNotificacao(mensagem) {
@@ -14,8 +16,7 @@ class NotificacaoController {
       body: Yup.string().required(),
       userToken: Yup.string().required(),
       aplicacao: Yup.string().required(),
-      firebaseClient: Yup.string().required(),
-      firebaseSecret: Yup.string().required(),
+      aplicacaoToken: Yup.string().required(),
     });
     console.log(request);
     if (!(await schema.isValid(request))) {
@@ -25,24 +26,17 @@ class NotificacaoController {
   }
 
   async salvarMensagem(request) {
-    const {
-      title,
-      body,
-      userToken,
-      aplicacao,
-      firebaseClient,
-      firebaseSecret,
-    } = request;
+    const { title, body, userToken, aplicacao, aplicacaoToken } = request;
     try {
       const notificacao = await Notificacao.create({
         title,
         body,
         userToken,
         aplicacao,
-        firebaseClient,
-        firebaseSecret,
+        aplicacaoToken,
       });
       console.log("Notificação salva: " + JSON.stringify(notificacao));
+      FirebaseService.processarDadosFirebase(notificacao);
     } catch (error) {
       throw error;
     }
