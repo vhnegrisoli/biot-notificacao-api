@@ -6,6 +6,7 @@ import NotificacaoController from "../controller/index";
 const queue = "enviar-notificacao.queue";
 
 export function connect() {
+  console.log(rabbitConfig.RABBIT_MQ_URL);
   amqp.connect(rabbitConfig.RABBIT_MQ_URL, (error, connection) => {
     if (error) {
       throw error;

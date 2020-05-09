@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
+import * as db from "./url";
+
 export function connect() {
-  mongoose.connect("mongodb://localhost:27017/notificacao", {
+  console.log(db.url);
+  console.log(process.env.NODE_ENV);
+  mongoose.connect(db.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

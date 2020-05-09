@@ -5,7 +5,8 @@
   "author": "Victor Hugo Negrisoli",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "set NODE_ENV=development&& nodemon app.js",
+    "start": "set NODE_ENV=production&& nodemon app.js"
   },
   "dependencies": {
     "amqplib": "^0.5.5",
