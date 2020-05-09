@@ -8,12 +8,13 @@ export async function sendNotification(data) {
     Authorization: "key=" + auth,
   };
   console.log("Mensagem a ser enviada ao Firebase: ");
-  console.log(data);
+  console.log(headers);
+  console.log(message);
   await axios
     .post(firebase.SEND_NOTIFICATION_URL, message, { headers: headers })
     .then((success) => {
       console.log("Mensagem de notificação enviada ao Firebase com sucesso!");
-      console.log(success);
+      console.log(success.data);
     })
     .catch((error) => {
       console.log("Houve um erro ao enviar a notificação ao Firebase.");
