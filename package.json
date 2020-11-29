@@ -5,8 +5,8 @@
   "author": "Victor Hugo Negrisoli",
   "license": "MIT",
   "scripts": {
-    "dev": "set NODE_ENV=development&& nodemon app.js",
-    "start": "set NODE_ENV=production&& sucrase-node app.js"
+    "dev": "set NODE_ENV=development&& node swagger.js&& nodemon app.js",
+    "start": "set NODE_ENV=production&& node swagger.js&& sucrase-node app.js"
   },
   "dependencies": {
     "amqplib": "^0.5.5",
@@ -16,6 +16,8 @@
     "mongoose": "^5.9.11",
     "nodemon": "^2.0.3",
     "sucrase": "^3.13.0",
+    "swagger-autogen": "^1.2.5",
+    "swagger-ui-express": "^4.1.5",
     "yup": "^0.28.5"
   },
   "devDependencies": {
